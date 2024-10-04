@@ -14,15 +14,15 @@ add_executable(edit_test libedit_test.c)
 target_link_libraries(edit_test edit)
 add_executable(edit_test_dll libedit_test_dll.c)
 install (TARGETS edit edit_test edit_test_dll
-  DESTINATION "${CMAKE_SOURCE_DIR}/bin${LIB_SUFFIX}")
+  DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 install (TARGETS edit_a
-  DESTINATION "${CMAKE_SOURCE_DIR}/lib${LIB_SUFFIX}")
+  DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
 install (FILES editline/readline.h
-  DESTINATION "${CMAKE_SOURCE_DIR}/include/editline")
+  DESTINATION "${CMAKE_INSTALL_PREFIX}/include/editline")
 string(TOUPPER "${CMAKE_BUILD_TYPE}" uppercase_CMAKE_BUILD_TYPE)
 if (MSVC AND uppercase_CMAKE_BUILD_TYPE MATCHES "DEBUG")
   install (FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/edit_a.pdb
-    DESTINATION "${CMAKE_SOURCE_DIR}/lib${LIB_SUFFIX}")
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
   install (FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/edit.pdb
-    DESTINATION "${CMAKE_SOURCE_DIR}/bin${LIB_SUFFIX}")
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
